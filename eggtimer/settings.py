@@ -42,8 +42,8 @@ INSTALLED_APPS = [
     'allauth',
     'allauth.account',
     'allauth.socialaccount',
-    'allauth.socialaccount.providers.facebook',
-    'allauth.socialaccount.providers.github',
+    # 'allauth.socialaccount.providers.facebook',
+    # 'allauth.socialaccount.providers.github',
     'rest_framework',
     'rest_framework.authtoken',
     'floppyforms',
@@ -97,7 +97,7 @@ WSGI_APPLICATION = 'eggtimer.wsgi.application'
 # Parse database configuration from $DATABASE_URL
 DATABASES = {
     'default': dj_database_url.config(
-        default="sqlite:///%s" % os.path.join(HOME_DIR, 'eggtimer', 'eggtimer.sqlite')
+        default="sqlite:///%s" % os.path.join(BASE_DIR, 'eggtimer', 'eggtimer.sqlite')
     )
 }
 
@@ -191,7 +191,7 @@ REST_FRAMEWORK = {
 # http://aa.usno.navy.mil/data/docs/api.php#phase
 MOON_PHASE_URL = 'http://api.usno.navy.mil'
 API_DATE_FORMAT = '%Y-%m-%d'
-US_DATE_FORMAT = '%-m/%-d/%Y'
+US_DATE_FORMAT = '%m/%d/%Y'
 
 # TODO maybe this could be a django plugin?
 DEPLOY_DATE = parse_datetime(os.environ.get('DEPLOY_DATE', ''))

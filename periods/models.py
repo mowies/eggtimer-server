@@ -257,19 +257,21 @@ class AerisData(models.Model):
 
     @staticmethod
     def get_from_server(from_date):
-        moon_phase_url = '{}/moon/phase'.format(settings.MOON_PHASE_URL)
-        from_date_obj = datetime.datetime.strptime(from_date, settings.API_DATE_FORMAT)
-        from_date_us_format = from_date_obj.strftime(settings.US_DATE_FORMAT)
-        params = {
-            'nump': 8,
-            'date': from_date_us_format,
-        }
-        try:
-            result = requests.get(moon_phase_url, params)
-            result = result.json()
-        except requests.exceptions.ConnectionError:
-            result = {'error': 'Unable to reach Moon Phase API'}
+        result = {'error': 'Unable to reach Moon Phase API'}
         return result
+        # moon_phase_url = '{}/moon/phase'.format(settings.MOON_PHASE_URL)
+        # from_date_obj = datetime.datetime.strptime(from_date, settings.API_DATE_FORMAT)
+        # from_date_us_format = from_date_obj.strftime(settings.US_DATE_FORMAT)
+        # params = {
+        #     'nump': 8,
+        #     'date': from_date_us_format,
+        # }
+        # try:
+        #     result = requests.get(moon_phase_url, params)
+        #     result = result.json()
+        # except requests.exceptions.ConnectionError:
+        #     result = {'error': 'Unable to reach Moon Phase API'}
+        # return result
 
     @classmethod
     def get_for_date(cls, from_date, to_date):
